@@ -1,0 +1,18 @@
+"""
+Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+"""
+
+def shuffle(self, nums: List[int], n: int) -> List[int]:
+    shuffle_arr = []
+    l = 0
+    r = n
+
+    for i in range(n):
+        shuffle_arr.append(nums[l])
+        shuffle_arr.append(nums[r])
+        l += 1
+        r += 1
+
+    return shuffle_arr
