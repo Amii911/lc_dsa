@@ -1,1 +1,2 @@
 # lc_dsa
+Welcome to my Data Structures and Algorithms repo. I'm working on completing LeetCode's Interview Crash Course on Data Structures and Algorithms. If you explore around you will find my problem solving thoughts shared while tackling problems. Feel free to reach out if you want to go over any problems. 
