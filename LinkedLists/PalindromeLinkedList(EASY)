@@ -1,0 +1,80 @@
+"""
+Given the head of a singly linked list, return true if it is a 
+palindrome
+ or false otherwise.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,2,1]
+Output: true
+"""
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+          #initalize pointers
+        slow, fast = head , head
+
+        #going to keep running while fast is not null(at the last node) and fast.next is not null
+        #looking for the middle (slow pointer)
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        
+        #revese second half
+        prev = None
+        while slow:
+            tmp = slow.next
+            slow.next = prev
+            prev = slow
+            slow = tmp
+
+        #check if palindrome
+        left, right = head , prev
+
+        while right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+        return True
+        
+
+
+'''
+check to see if the list is a palindrome .. 
+T = palin 
+F != palin
+
+loop through list - will a while loop because we do not know the length 
+ two pointers? one at the head one at the tail
+ slow point and fast point
+ fast reaches the end 
+ slow should be in the middle
+ revser the linked list to check is palin or not
+
+ arr option? 0(n)
+ def isPalindrome(self, head: ListNode) -> bool:
+     nums = []
+     
+     while head:
+         nums.append(head.val)
+         head = head.next
+     
+     left, right = 0, len(nums) - 1
+     
+     while left <= right: 
+        if nums[left] != nums[r]:
+            return False
+        left += 1
+        right -= 1
+     return True
+
+'''
