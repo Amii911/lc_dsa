@@ -1,0 +1,37 @@
+"""
+Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+
+Return the running sum of nums.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4]
+Output: [1,3,6,10]
+Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+"""
+
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        for num in range(len(nums) - 1):
+            nums[num + 1] += nums[num]
+
+        return nums
+
+        
+"""
+return the running sum of nums
+
+sort no matter
+there will be duplicates
+no negatives
+
+[2,3,4,5]
+[2,5,9,14]
+
+brute force? O(n2) = need to loop thru  and add two numbers
+
+per fix ? O(n) 
+
+"""
