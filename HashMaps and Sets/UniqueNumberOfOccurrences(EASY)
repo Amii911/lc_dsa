@@ -1,0 +1,79 @@
+"""
+Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
+
+Example 1:
+
+Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.
+"""
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        hashmap = {}
+
+        for i in range(len(arr)):
+            if arr[i] not in hashmap:
+                hashmap[arr[i]] = 1
+            else:
+                hashmap[arr[i]] += 1
+
+        unique = set()
+        for count in hashmap.values():
+            if count in unique:
+                return False
+            unique.add(count)
+
+        return True
+    
+    """
+return true if the number of occurances are unique else false
+
+	Will i always get an int? Can I get an empty [ ]? Is that then False? 
+	Sorting matters? No? Can I sort arr?
+	There will be duplicates? Each value is unique… set()? 
+	All positive numbers? Will i get negatives? Will i get 0? 
+
+use a hashmap O(1) for freq
+
+       # hashmap = {}
+        # for i in range(len(arr)):
+        #     if arr[i] not in hashmap:
+        #         hashmap[arr[i]] = 1
+        #     else:
+        #         hashmap[arr[i]] += 1
+        
+        # freq = Counter(arr)
+        # print(freq)
+
+        # freq = defaultdict(int)
+        # for i in range(len(arr)):
+        #     freq[arr[i]] = 1
+        # print(freq)
+
+once have hashmap I want to grab values
+are the occurances unique?
+
+check unique hashset O(1)
+
+iterate thru 
+
+1. thought that the element number needs to match occurances (ex. 1)
+    WRONG!
+        hashmap = {}
+
+        for i in range(len(arr)):
+            if arr[i] not in hashmap:
+                hashmap[arr[i]] = 1
+            else:
+                hashmap[arr[i]] += 1
+
+        # TRYING TO CHECK VALUES IN HASHMAP AND SEE IF THERE ARE UNIQUE VALUES
+        unique = set()
+        for keys, values in hashmap.items():
+            unique.add(values)
+            print(unique)
+            if values == values:
+                return False
+        return True
+
+"""
