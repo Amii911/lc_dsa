@@ -1,0 +1,97 @@
+"""
+You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+
+We repeatedly make duplicate removals on s until we no longer can.
+
+Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
+
+ 
+
+Example 1:
+
+Input: s = "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+Example 2:
+
+Input: s = "azxxzy"
+Output: "ay"
+
+"""
+ode
+Python3
+class Solution:
+    def removeDuplicates(self, s: str) -> str:
+        stack = []
+
+        for i in range(len(s)):
+            if stack and s[i] == stack[-1]:
+                stack.pop()
+            else:
+                stack.append(s[i])
+                
+        return "".join(stack)
+
+            
+
+        
+
+"""
+reutrn the final str after all duplicates are removed
+
+d/r bb aa cc... remove
+
+
+i = "acbbca"
+acca == remove bb
+aa == remove cc
+ "" == remove aa
+o = ""
+
+iterate thru string to find duplicates
+once I found two of the respeated char I deleted
+if the new str had any repeated char
+i repeate the process of delete until i get a str where the char next 
+to each other are not repeated
+
+return result
+
+using nested loop?
+
+
+solve using two pointers? does not solve all cases O(n)
+        left = 0 
+        right = 1
+
+        while right < len(s):
+            if s[left] == s[right]:
+                s = s.replace(s[left], "")
+                s = s.replace(s[left],"")
+
+            else:
+                right += 1
+                left += 1
+
+        return s
+
+stack
+[]
+
+"abbaca"
+[a]
+ b 
+[ab]
+ b
+ POP
+[a]
+ a
+POP
+[]
+ c
+[c]
+ a
+[ca]
+"".join(stack) 
+
+"""
