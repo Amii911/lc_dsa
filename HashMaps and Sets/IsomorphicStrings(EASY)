@@ -1,0 +1,99 @@
+"""
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+ 
+
+Example 1:
+
+Input: s = "egg", t = "add"
+
+Output: true
+
+Explanation:
+
+The strings s and t can be made identical by:
+
+Mapping 'e' to 'a'.
+Mapping 'g' to 'd'.
+Example 2:
+
+Input: s = "foo", t = "bar"
+
+Output: false
+
+Explanation:
+
+The strings s and t can not be made identical as 'o' needs to be mapped to both 'a' and 'r'.
+
+Example 3:
+
+Input: s = "paper", t = "title"
+
+Output: true
+
+ 
+
+Constraints:
+
+1 <= s.length <= 5 * 104
+t.length == s.length
+s and t consist of any valid ascii character.
+
+"""
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        hashmap_s = {}  
+        hashmap_t = {} 
+
+        for i in range(len(s)):
+            char_s, char_t = s[i], t[i]
+
+            if char_s in hashmap_s and hashmap_s[char_s] != char_t:
+                return False
+
+            if char_t in hashmap_t and hashmap_t[char_t] != char_s:
+                return False
+
+            hashmap_s[char_s] = char_t
+            hashmap_t[char_t] = char_s
+        
+        return True
+# e;0
+
+
+"""
+1. Repeat questions in your words
+    return True or False if s and t are isomorphic
+        isomophic means that the letters mapped in s can be replaced by letters in t
+
+2. Check Assumptions 	
+     there will always be valid input 
+     if teh len of s does not equal the len of t return False
+
+3. Real Examples - draw out some examples more than 3>5
+    s = "aabbc" t = "bbaad"
+        False
+
+    s = "a" t = "b"
+        True
+
+4. Barinstorm solution + Time and Space Complex
+    hashmap O(n) O(n)
+    hashmap_s 
+    hashmap_t
+    {F:1, O:2 }
+    {B:1, A:1, R:1}
+
+    {P:2, A:1, E:1, R:1}
+    {T:2, I:1, L:1, E:1}
+
+5. Code
+6. Test your code
+"""
