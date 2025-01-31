@@ -39,4 +39,32 @@ class Solution:
                 return False
         
         return True
+    
+
+"""
+
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        words = s.split()
+
+        # Ensure lengths match
+        if len(words) != len(pattern):
+            return False
+
+        hashmap_p_to_w = {}  
+        hashmap_w_to_p = {}  
+
+        for i in range(len(pattern)):
+            char_p, word = pattern[i], words[i]
+
+            if (char_p in hashmap_p_to_w and hashmap_p_to_w[char_p] != word) or \
+               (word in hashmap_w_to_p and hashmap_w_to_p[word] != char_p):
+                return False
+
+            hashmap_p_to_w[char_p] = word
+            hashmap_w_to_p[word] = char_p
+
+        return True
+        
+"""
         
