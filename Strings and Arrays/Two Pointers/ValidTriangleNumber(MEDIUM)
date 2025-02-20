@@ -38,3 +38,4 @@ def triangleNumber(nums):
         left += 1
 
   return count
+  
